@@ -381,7 +381,11 @@ int main(int argc, char* argv[]) {
         std::cout << buf << std::endl;
         buf.clear();
 
-        std::this_thread::sleep_for(std::chrono::seconds(step));
+        if (step != "once") {
+            std::this_thread::sleep_for(std::chrono::seconds(step));
+        } else {
+            break;
+        }
     }
 
     vc_gencmd_stop();
